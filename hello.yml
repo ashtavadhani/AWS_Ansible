@@ -1,0 +1,5 @@
+--- #hello
+- hosts: localhost
+  become: yes
+  user: ansible
+  
