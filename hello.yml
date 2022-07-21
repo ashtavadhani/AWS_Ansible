@@ -1,5 +1,14 @@
---- #hello
+--- # Get ASG details
 - hosts: localhost
-  become: yes
-  user: ansible
-  
+  module_defaults:
+    group/aws:
+      aws_access_key: AKIAXLV7WSP4FEFCOGGY
+      aws_secret_key: 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
+      region: ap-south-1
+
+  tasks:
+      - ec2_group_info: 
+        register: asgs
+
+      - name: print asg
+        debug: var=asgs
