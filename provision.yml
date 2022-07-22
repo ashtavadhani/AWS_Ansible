@@ -1,0 +1,56 @@
+--- # Get UserInputs and assign it to EC2 instance
+ - hosts: localhost
+
+   vars_prompt:
+      - name: Region
+        private: no
+        prompt: "Please specify Region Name "
+
+      - name: image
+        private: no
+        prompt: "Please specify Image ID "
+
+      - name: Key
+        private: no
+        prompt: "Please specify Key Name "
+
+      - name: instance_type
+        private: no
+        prompt: "Please specify Instance_Type "
+
+      - name: security_group
+        private: no
+        prompt: "Please specify Security Group "
+
+      - name: aws_access_key
+        private: no
+        prompt: "Please specify Aws_Access_key "
+
+      - name: aws_secret_key
+        private: no
+        prompt: "Please specify Aws_Secret_key "
+
+      - name: tools
+        prompt: Enter Tools (comma seperated)
+        private: no
+
+   tasks:
+      - set_fact:
+          application_list: "{{ tools.split(',') }}"
+
+      - name: get tools
+        debug:
+          msg: "{{item}}"
+        loop: "{{application_list}}"
+
+
+      - name: Create EC2 machine
+        ec2_instance:
+          name: New_EC2_Instance
+          region: "{{Region}}"
+          key_name: "{{Key}}"
+          instance_type: "{{instance_type}}"
+          security_group: "{{security_group}}"
+          aws_access_key: "{{aws_access_key}}"
+          aws_secret_key: "{{aws_secret_key}}"
+          image_id: "{{image}}"
