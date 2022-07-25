@@ -51,3 +51,8 @@
         debug:
          msg: "{{ item.group_name}}"
         with_items: "{{ asgs.security_groups }}"
+        
+      - set_stats:
+        data:
+          favorite_color: "orange"
+
