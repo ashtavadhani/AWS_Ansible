@@ -1,0 +1,18 @@
+--- # Install tools
+ - hosts: localhost
+
+   vars_prompt:
+
+      - name: tools
+        prompt: Enter Tools (comma seperated)
+        private: no
+
+   tasks:
+      - set_fact:
+          application_list: "{{ tools.split(',') }}"
+
+      - name: get tools
+        yum:
+          name: "{{item}}"
+          state: present
+        loop: "{{application_list}}"
