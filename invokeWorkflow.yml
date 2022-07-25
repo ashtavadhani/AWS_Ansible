@@ -1,0 +1,6 @@
+--- # Get UserInputs and assign it to EC2 instance
+ - hosts: localhost
+ - name: Launch a workflow with a timeout of 10 seconds
+   tower_workflow_launch:
+     workflow_template: "Test Workflow"
+     timeout: 10
