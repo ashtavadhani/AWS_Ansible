@@ -1,9 +1,9 @@
---- # Get UserInputs and assign it to EC2 instance
- - hosts: localhost
- 
- - tasks:
- 
-  - name: Launch a workflow with a timeout of 10 seconds
-    workflow_launch:
-      workflow_template: "AWS_Akshay_Workflow"
-      timeout: 10
+---
+  - hosts: localhost
+
+  - tasks:
+      - name: Launch a workflow with a timeout of 10 seconds
+        workflow_launch:
+            workflow_template: "AWS_Akshay_Workflow"
+            timeout: 10
+
