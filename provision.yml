@@ -42,15 +42,6 @@
         debug:
           msg: "{{item}}"
         loop: "{{application_list}}"
-
-
-      - name: Create EC2 machine
-        ec2_instance:
-          name: New_EC2_Instance
-          region: "{{Region}}"
-          key_name: "{{Key}}"
-          instance_type: "{{instance_type}}"
-          security_group: "{{security_group}}"
-          aws_access_key: "{{aws_access_key}}"
-          aws_secret_key: "{{aws_secret_key}}"
-          image_id: "{{image}}"
+      
+      - debug: 
+          msg: "{{favorite_color}}"
