@@ -1,6 +1,13 @@
 --- # Get UserInputs and assign it to EC2 instance
  - hosts: localhost
-   
+   module_defaults: 
+      group/aws:
+        aws_access_key: AKIAXLV7WSP4FEFCOGGY
+        aws_secret_key: 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
+        region: ap-south-1
+   vars:
+     groupList: []
+     amiListValue: []
    vars_prompt:
       - name: Region
         private: no
@@ -22,7 +29,7 @@
       - name: Get All security groups
         ec2_group_info:
           aws_access_key: "{{aws_access_key}}"
-          aws_secret_key: "{{aws_secret_key}}"
+          aws_secret_key: "{{aws_secret_key}}"  
           region: "{{Region}}"
         register: asgs
 
@@ -35,14 +42,24 @@
          region: "{{Region}}"
         #region: "{{Region}}"
         register: amiList
+      
+      - name: Set facts
+        set_fact:
+            amiListValue: "{{ amiListValue }} + ['{{item.image_id}}']"
+        with_items : "{{ amiList.images }}"
+
+      - name: Set facts
+        set_fact:
+            groupList: "{{ groupList }} + ['{{item.group_name}}']"
+        with_items : "{{ asgs.security_groups }}"
+
 
       - name: UserInputs
         debug:
-          #var: amiList.images[0].image_id
-          msg: "{{ item.image_id }}"
-        with_items: "{{ amiList.images }}"
-
-      - name: Show group Names
+          var=amiListValue
+          #msg: "{{ item.image_id }}"
+          #with_items: "{{ amiList.images }}"
+      
+      - name: Show group Names   
         debug:
-         msg: "{{ item.group_name}}"
-        with_items: "{{ asgs.security_groups }}"
+          var=groupList
