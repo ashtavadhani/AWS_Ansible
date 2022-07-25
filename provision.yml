@@ -43,5 +43,3 @@
           msg: "{{item}}"
         loop: "{{application_list}}"
       
-      - debug: 
-          msg: "{{favorite_color}}"
