@@ -1,5 +1,6 @@
 --- # Install tools
  - hosts: localhost
+   become: yes
 
    vars_prompt:
 
