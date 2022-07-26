@@ -16,3 +16,5 @@
           name: "{{item}}"
           state: present
         loop: "{{application_list}}"
+        when: application_list is iterable
+
