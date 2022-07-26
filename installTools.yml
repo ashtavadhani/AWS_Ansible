@@ -1,6 +1,5 @@
 --- # Install tools
  - hosts: ec2-3-110-108-37.ap-south-1.compute.amazonaws.com
-   become: yes
 
    vars_prompt:
 
