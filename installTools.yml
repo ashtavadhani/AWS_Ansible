@@ -1,7 +1,7 @@
 --- # Install tools
  - hosts: ec2-13-232-41-14.ap-south-1.compute.amazonaws.com
    become: yes
-
+   sudo: yes
    vars_prompt:
 
       - name: tools
