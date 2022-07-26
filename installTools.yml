@@ -1,5 +1,5 @@
 --- # Install tools
- - hosts: 3.110.108.37
+ - hosts: ec2-13-232-41-14.ap-south-1.compute.amazonaws.com
 
    vars_prompt:
 
