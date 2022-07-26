@@ -1,5 +1,5 @@
 --- # Install tools
- - hosts: localhost
+ - hosts: AWS_Akshay
    become: yes
 
    vars_prompt:
