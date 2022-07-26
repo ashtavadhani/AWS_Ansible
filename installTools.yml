@@ -1,5 +1,5 @@
 --- # Install tools
- - hosts: ec2-13-232-41-14.ap-south-1.compute.amazonaws.com
+ - hosts: 
    become: yes
    become_user: ec2-user
    connection: ssh
