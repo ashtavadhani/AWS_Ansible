@@ -1,10 +1,6 @@
 --- # Get UserInputs and assign it to EC2 instance
  - hosts: localhost
-   module_defaults: 
-      group/aws:
-        aws_access_key: AKIAXLV7WSP4FEFCOGGY
-        aws_secret_key: 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
-        region: ap-south-1
+   
    vars:
      groupList: []
      amiListValue: []
